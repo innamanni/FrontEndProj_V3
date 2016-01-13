@@ -1,0 +1,40 @@
+<!--
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>My First Service App</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
+        <script src='js/myApp_restful.js'></script>
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+-->
+        <div ng-controller="ReadController as readC">
+            <table>
+              <thead>
+                <tr>
+                    <th></th>
+                    <th>Street 1</th>
+                    <th>Street 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="n in readC.userData">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ n.street1 }}</td>
+                    <td>{{ n.street2 }}</td>
+                    <td>{{ n.city }}</td>
+                    <td>{{ n.state }}</td>
+                    <td>{{ n.zip }}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+<!-- 
+    </body>
+</html> 
+-->

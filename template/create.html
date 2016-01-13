@@ -1,0 +1,49 @@
+
+        <div>
+            <form ng-controller="CreateController as createC" novalidate="novalidate" >
+		        <label>Please fill out your information below to register for this event.
+		        </label>
+		        <label class="message">{{ createC.createResponse }}
+                </label>
+		        
+		        <fieldset id="Address" name="Address">
+		            <label><strong>Address</strong></label><br />
+		
+		            <fieldset class="">
+		                <label for="street1">(street 1)</label><br />
+		                <input type="text" ng-model="address.street1" name="street1" id="street1" />
+		            </fieldset>
+		            
+		            <fieldset class="">
+		                <label for="street2">(street 2)</label><br />
+		                <input type="text" ng-model="address.street2" name="street2" id="street2" />
+		            </fieldset>
+		            
+		            <fieldset class="">
+		                <label for="city">(city) </label><br />
+		                <input type="text" ng-model="address.city" name="city" id="city" />
+		            </fieldset>
+		            
+		            <fieldset class="">
+                        <label for="state">(state) </label><br />
+                        <select name="state" id="state" ng-model="state"  ng-controller="StateController as stateC" >
+                          <!--option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-selected=stateC.stateCtrlVal(option.id)>{{option.abbr}}</option-->                          
+                          <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id!='10'" ng-selected=false>{{option.abbr}}</option>
+                          <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id=='10'" ng-selected=true>{{option.abbr}}</option>
+                        </select>
+                    </fieldset>
+		            
+		            <fieldset class="">
+		                <label for="zip">(zip)</label><br />
+		                <input type="text" ng-model="address.zip" name="zip" id="zip" size="10" />
+		            </fieldset>
+	           </fieldset>
+	           
+	           <fieldset class="submitButtons">
+		            <input class="button" type="button" ng-click="createC.reset(address)" value="Reset" />
+                    <input class="button" type="submit" ng-click="createC.update(address)" value="Save" />
+		       </fieldset>
+		            
+		  </form>
+
+        </div>
