@@ -39,7 +39,11 @@
 	function ReadController($http){
 		var vm = this;
 		$http.get('http://localhost/BackEndProj_V3/readAddrController.php').
-	    success(function(data) {vm.userData = data;});
+	    success(function(data) {
+	    	vm.userData = data.result;
+	    	console.log("vm.userData:");
+			console.log(vm.userData);
+	    	});
 	};
 	
 
@@ -84,7 +88,7 @@
 	
 	function CreateController($http){
 		var vm = this;
-		//console.log("I am in CreateController");
+		console.log("I am in CreateController Y'all!!!!");
 		vm.address = {};
 		vm.update = function(address) {
 	    	console.log("update method in CreateController");
@@ -140,7 +144,7 @@
 		$http.get('http://localhost/BackEndProj_V3/readAddrController.php').
 	    success(function(data) {
 	    	console.log(data);
-	    	vm.userData = data;
+	    	vm.userData = data.result;
 	    });
 		
 		//create an array of address_ids to delete
@@ -212,7 +216,7 @@
 		$http.get('http://localhost/BackEndProj_V3/readAddrController.php').
 	    success(function(data) {
 	    	console.log(data);
-	    	vm.userData = data;
+	    	vm.userData = data.result;
 	    });
 		
 		//set update id
@@ -247,9 +251,9 @@
             headers: {'Content-Type': 'application/json'}
     	}).success(function(response) {
     	    console.log('Success!');
-    	    vm.userData = response;
+    	    vm.userData = response.result;
     	    console.log('after restful call, response is: ');
-    	    console.log(response);
+    	    console.log(response.result);
 		}).error(function(response) {
 			console.log(response);
 			console.log('There was a problem');
