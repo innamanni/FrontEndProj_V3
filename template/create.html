@@ -26,7 +26,7 @@
 		            
 		            <fieldset class="">
                         <label for="state">(state) </label><br />
-                        <select name="state" id="state" ng-model="state"  ng-controller="StateController as stateC" >
+                        <select name="state" id="state" ng-model="address.state"  ng-controller="StateController as stateC" >
                           <!--option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-selected=stateC.stateCtrlVal(option.id)>{{option.abbr}}</option-->                          
                           <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id!='10'" ng-selected=false>{{option.abbr}}</option>
                           <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id=='10'" ng-selected=true>{{option.abbr}}</option>
