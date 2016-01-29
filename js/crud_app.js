@@ -38,13 +38,13 @@
 	
 	function ReadController($http){
 		var vm = this;
-		$http.get('http://localhost/BackEndProj_V3/readPersonController.php').
+		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
-	    	vm.userData = data.result;
+	    	vm.userData = data.personList;
 	    	console.log("data:");
 			console.log(data);
-			console.log("vm.userData[0].phoneDTO:");
-			console.log(vm.userData[0].phoneDTO);
+			//console.log("vm.userData[0].phoneDTO:");
+			//console.log(vm.userData[0].phoneDTO);
 	    	});
 	};
 	
