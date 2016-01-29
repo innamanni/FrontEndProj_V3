@@ -1,11 +1,11 @@
 @CHARSET "ISO-8859-1";
 
 body {
-    width: 70%;	
+    width: 70%; 
 }
 
 section {
-    width: 100%;	
+    width: 100%;    
 }
 
 table {
@@ -34,7 +34,7 @@ th {
 tr:nth-child(even) {background-color: #f2f2f2}
 
 .action {
-	background-color: white;
+    background-color: white;
 }
 
 input[type=button], input[type=submit] {
@@ -44,6 +44,11 @@ input[type=button], input[type=submit] {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
+    width: 22%;
+}
+
+input {
+    width: 90%; 
 }
 
 form {
@@ -65,8 +70,8 @@ form {
 
 section {
     width: 80%;
-	align: left;
-	float: left;
+    align: left;
+    float: left;
 }
 
 header {
@@ -81,9 +86,36 @@ header {
 }
 
 .message{
-	display: block;
-	width: 99%;
- 	background-color: #057BFF;
- 	color: white;
- 	padding-left: 5px;
+    display: block;
+    width: 99%;
+    background-color: #057BFF;
+    color: white;
+    padding-left: 5px;
+}
+
+.name, .address1, .address2, .email {
+    display: block;
+    float: left;
+    width: 44%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.state {
+    display: block;
+    float: left;
+    width: 16%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.phone, .zip {
+    display: block;
+    float: left;
+    width: 26%;
+    border: none;
+    margin: 0px;
+    padding: 0px;
 }

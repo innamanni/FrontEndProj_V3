@@ -3,21 +3,19 @@
               <thead>
                 <tr>
                     <th></th>
-                    <th>Street 1</th>
-                    <th>Street 2</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="n in readC.userData">
+                <tr ng-repeat="person in readC.userData">
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ n.street1 }}</td>
-                    <td>{{ n.street2 }}</td>
-                    <td>{{ n.city }}</td>
-                    <td>{{ n.state }}</td>
-                    <td>{{ n.zip }}</td>
+                    <td>{{ person.f_name }} {{ person.l_name }}</td>
+                    <td>{{ person.email_addr }}</td>
+                    <td>{{ person.addrDTO.street1 }}</td>
+                    <td>{{ person.phoneDTO.phone_number }} ({{person.phoneDTO.phone_type}}) </td>
                 </tr>
               </tbody>
             </table>

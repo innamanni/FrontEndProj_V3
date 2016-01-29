@@ -1,49 +1,84 @@
 
         <div>
             <form ng-controller="CreateController as createC" novalidate="novalidate" >
-		        <label>Please fill out your information below to register for this event.
-		        </label>
-		        <label class="message">{{ createC.createResponse }}
+                <label>Please fill out your information below to register for this event.
                 </label>
-		        
-		        <fieldset id="Address" name="Address">
-		            <label><strong>Address</strong></label><br />
-		
-		            <fieldset class="">
-		                <label for="street1">(street 1)</label><br />
-		                <input type="text" ng-model="address.street1" name="street1" id="street1" />
-		            </fieldset>
-		            
-		            <fieldset class="">
-		                <label for="street2">(street 2)</label><br />
-		                <input type="text" ng-model="address.street2" name="street2" id="street2" />
-		            </fieldset>
-		            
-		            <fieldset class="">
-		                <label for="city">(city) </label><br />
-		                <input type="text" ng-model="address.city" name="city" id="city" />
-		            </fieldset>
-		            
-		            <fieldset class="">
-                        <label for="state">(state) </label><br />
-                        <select name="state" id="state" ng-model="address.state"  ng-controller="StateController as stateC" >
-                          <!--option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-selected=stateC.stateCtrlVal(option.id)>{{option.abbr}}</option-->                          
-                          <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id!='10'" ng-selected=false>{{option.abbr}}</option>
-                          <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id=='10'" ng-selected=true>{{option.abbr}}</option>
-                        </select>
+                <label class="message">{{ createC.createResponse }}
+                </label>
+                
+                <fieldset id="Person" name="Person">
+                    <!--label><strong>Person</strong></label><br / -->
+                    <fieldset class="input">
+                        <fieldset class="name">
+                            <label for="fname">(first name)</label><br />
+                            <input type="text" ng-model="person.fname" name="fname" id="fname" />
+                        </fieldset>
+                        
+                        <fieldset class="name">
+                            <label for="lname">(last name)</label><br />
+                            <input type="text" ng-model="person.lname" name="lname" id="lname" />
+                        </fieldset>
                     </fieldset>
-		            
-		            <fieldset class="">
-		                <label for="zip">(zip)</label><br />
-		                <input type="text" ng-model="address.zip" name="zip" id="zip" size="10" />
-		            </fieldset>
-	           </fieldset>
-	           
-	           <fieldset class="submitButtons">
-		            <input class="button" type="button" ng-click="createC.reset(address)" value="Reset" />
-                    <input class="button" type="submit" ng-click="createC.update(address)" value="Save" />
-		       </fieldset>
-		            
-		  </form>
+                    
+                    <!-- COLLECT ADDRESS TABLE FELDS HERE -->
+                    <fieldset class="input">
+                        <fieldset class="address1">
+                            <label for="street1">(street 1)</label><br />
+                            <input type="text" ng-model="person.address.street1" name="street1" id="street1" />
+                        </fieldset>
+                        
+                        <fieldset class="address1">
+                            <label for="street2">(street 2)</label><br />
+                            <input type="text" ng-model="person.address.street2" name="street2" id="street2" />
+                        </fieldset>
+                    </fieldset>
+                    <fieldset class="input">
+                        <fieldset class="address2">
+                            <label for="city">(city) </label><br />
+                            <input type="text" ng-model="person.address.city" name="city" id="city" />
+                        </fieldset>
+                        
+                        <fieldset class="state">
+                            <label for="state">(state) </label><br />
+                            <select name="state" id="state" ng-model="person.address.state_id"  ng-controller="StateController as stateC" >
+                              <!--option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-selected=stateC.stateCtrlVal(option.id)>{{option.abbr}}</option-->                          
+                              <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id!='10'" ng-selected=false>{{option.abbr}}</option>
+                              <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id=='10'" ng-selected=true>{{option.abbr}}</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset class="zip">
+                            <label for="zip">(zip)</label><br />
+                            <input type="text" ng-model="person.address.zip" name="zip" id="zip" size="10" />
+                        </fieldset>
+                    </fieldset>
+                        <!-- ******************************** -->
+                    
+                    <fieldset class="input">
+                        <fieldset class="email">
+                            <label for="email">(email address) </label><br />
+                            <input type="email" ng-model="person.email" name="email" id="email" />
+                        </fieldset>
+                      <fieldset class="phone">
+                        <label for="phone">(phone number) </label><br />
+                        <input type="phone" ng-model="person.phone.phone_number" name="phone" id="phone" />
+                       </fieldset>
+                       <fieldset class="phone">
+                        <label for="phone_type">(phone type) </label><br />
+                        <select name="phone_type" class="phone_type" ng-model="person.phone.phone_type_id" ng-controller="PhoneController as phoneC" >                   
+                          <option ng-repeat="option in phoneC.phoneTypeList" value="{{option.phone_type_id}}" ng-if="option.phone_type_id!='1'" ng-selected=false>{{option.phone_type}}</option>
+                          <option ng-repeat="option in phoneC.phoneTypeList" value="{{option.phone_type_id}}" ng-if="option.phone_type_id=='1'" ng-selected=true>{{option.phone_type}}</option>
+                        </select>
+                       </fieldset>
+                    </fieldset>
+
+               </fieldset>
+               
+               <fieldset class="submitButtons">
+                    <input class="button" type="button" ng-click="createC.reset(person)" value="Reset" />
+                    <input class="button" type="submit" ng-click="createC.create(person)" value="Save" />
+               </fieldset>
+                    
+          </form>
 
         </div>

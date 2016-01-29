@@ -4,29 +4,25 @@
               <thead>
                 <tr>
                     <th>update</th>
-                    <th>Street 1</th>
-                    <th>Street 2</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip</th>
-                    <td>address_id</td>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Phone Number</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="n in updateListC.userData">
-                    <td class="action"><input type="radio" name="update" ng-click="updateListC.setUpdateId(n.address_id)"/></td>
-                    <td>{{ n.street1 }}</td> 
-                    <td>{{ n.street2 }}</td>
-                    <td>{{ n.city }}</td>
-                    <td>{{ n.state }}</td>
-                    <td>{{ n.zip }}</td>
-                    <td>{{ n.address_id }}</td>
+                <tr ng-repeat="person in updateListC.userData">
+                    <td class="action"><input type="radio" name="update" ng-click="updateListC.setUpdateId(person.person_id)"/></td>
+                    <td>{{ person.f_name }} {{ person.l_name }}</td>
+                    <td>{{ person.email_addr }}</td>
+                    <td>{{ person.addrDTO.street1 }}</td>
+                    <td>{{ person.phoneDTO.phone_number }} ({{person.phoneDTO.phone_type}}) </td>
                 </tr>
                 <tr>
                     <td colspan=7 class="action">
-	                    <form>
-	                       <input class="button" type="submit" ng-click="updateListC.loadNewTemplate()" value="Update selected"/>
-	                    </form>
+                        <form>
+                           <input class="" type="submit" ng-click="updateListC.loadNewTemplate()" value="Update"/>
+                        </form>
                     </td>
                 </tr>
               </tbody>
