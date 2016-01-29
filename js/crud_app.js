@@ -57,7 +57,7 @@
 	
 		return { 
 			getStates: function () {
-				var States = $resource('http://localhost/BackEndProj_V3/getState.php');
+				var States = $resource('http://localhost/BackEndProj_V3/getStates.php');
 				return States.query(function(states){
 					return states;
 				});
