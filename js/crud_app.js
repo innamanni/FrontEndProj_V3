@@ -39,9 +39,10 @@
 	function ReadController($http){
 		var vm = this;
 		vm.bgcolor='white';
+		//get shallow data for all users
 		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
-	    	vm.userData = data.personList;
+	    	vm.allUsers = data.personList;
 	    	console.log("data:");
 			console.log(data);
 			//console.log("vm.userData[0].phoneDTO:");
@@ -52,9 +53,29 @@
 	    	else {vm.bgcolor='white';}
 		};
 		vm.expand = function(person_id) {
+			//get additional data for one user
 	    	console.log("expand method in ReadController, person_id is & bgcolor are:");
 	    	console.log(person_id);
 	    	console.log(vm.bgcolor);
+	    	vm.person_id_obj = {"person_id" : person_id};
+			var myData = JSON.stringify(vm.person_id_obj);
+			console.log('myData: ');
+			console.log(myData);
+			$http({
+	            url: 'http://localhost/BackEndProj_V3/personDetailsController.php',
+	            method: "POST",
+	            data: myData,
+	            headers: {'Content-Type': 'application/json'}
+	    	}).success(function(personObj) {
+	    	    console.log('***response.result from updatePersonController.php***');
+	    	    console.log(personObj);
+	    	    console.log(personObj.phoneDTO);
+	    	    console.log(personObj.addrDTO);
+	    	    vm.oneUser = personObj;
+			}).error(function(response) {
+				console.log(response);
+				console.log('There was a problem');
+			});
 		};
 	};
 	
@@ -194,7 +215,7 @@
 		
 		//display all person in the db
 		//SHOULD CHECK IF THE DATA IS ALREADY IN SCOPE!
-		$http.get('http://localhost/BackEndProj_V3/readPersonController.php').
+		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
 	    	console.log('readPersonController gets data:');
 	    	console.log(data);
@@ -268,7 +289,7 @@
 	function UpdateListController($http, $location){
 		var vm = this;
 		//get all person from the db
-		$http.get('http://localhost/BackEndProj_V3/readPersonController.php').
+		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
 	    	console.log(data);
 	    	vm.userData = data.result;

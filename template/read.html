@@ -5,17 +5,17 @@
                     <th></th>
                     <th>Name</th>
                     <th>Email</th>
-                    <!-- th>Address</th>
-                    <th>Phone</th -->
+                    <th ng-hide="readC.bgcolor=='white'"  ng-show="readC.bgcolor=='#ACD4FC'">Address</th>
+                    <th ng-hide="readC.bgcolor=='white'"  ng-show="readC.bgcolor=='#ACD4FC'">Phone</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-style="myStyle" ng-repeat="person in readC.userData" ng-click="readC.bgColor(); myStyle={'background-color':readC.bgcolor}; readC.expand(person.person_id);">
+                <tr ng-style="myStyle" ng-repeat="person in readC.allUsers" ng-click="readC.bgColor(); myStyle={'background-color':readC.bgcolor}; readC.expand(person.person_id);">
                     <td>{{ $index + 1 }}</td>
                     <td>{{ person.f_name }} {{ person.l_name }}</td>
                     <td>{{ person.email_addr }}</td>
-                    <!--td>{{ person.addrDTO.street1 }}</td>
-                    <td>{{ person.phoneDTO.phone_number }} ({{person.phoneDTO.phone_type}}) </td-->
+                    <td ng-hide="readC.bgcolor=='white'"  ng-show="readC.bgcolor=='#ACD4FC'">{{ readC.oneUser.addrDTO.street1 }}</td>
+                    <td ng-hide="readC.bgcolor=='white'"  ng-show="readC.bgcolor=='#ACD4FC'">{{ readC.oneUser.phoneDTO.phone_number }}</td>
                 </tr>
               </tbody>
             </table>
