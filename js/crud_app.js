@@ -38,6 +38,7 @@
 	
 	function ReadController($http){
 		var vm = this;
+		vm.bgcolor='white';
 		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
 	    	vm.userData = data.personList;
@@ -46,6 +47,15 @@
 			//console.log("vm.userData[0].phoneDTO:");
 			//console.log(vm.userData[0].phoneDTO);
 	    	});
+		vm.bgColor = function() {
+	    	if (vm.bgcolor=='white'){vm.bgcolor='#ACD4FC';}
+	    	else {vm.bgcolor='white';}
+		};
+		vm.expand = function(person_id) {
+	    	console.log("expand method in ReadController, person_id is & bgcolor are:");
+	    	console.log(person_id);
+	    	console.log(vm.bgcolor);
+		};
 	};
 	
 
