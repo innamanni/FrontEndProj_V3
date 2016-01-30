@@ -38,13 +38,14 @@
 	
 	function ReadController($http){
 		var vm = this;
+		vm.allUsers = {};
 		vm.bgcolor='white';
 		//get shallow data for all users
 		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
 	    	vm.allUsers = data.personList;
-	    	console.log("data:");
-			console.log(data);
+	    	console.log("***ALL USERS:***");
+			console.log(vm.allUsers);
 			//console.log("vm.userData[0].phoneDTO:");
 			//console.log(vm.userData[0].phoneDTO);
 	    	});
@@ -54,6 +55,7 @@
 		};
 		vm.expand = function(person_id) {
 			//get additional data for one user
+			vm.selectedID = person_id
 	    	console.log("expand method in ReadController, person_id is & bgcolor are:");
 	    	console.log(person_id);
 	    	console.log(vm.bgcolor);
@@ -76,6 +78,18 @@
 				console.log(response);
 				console.log('There was a problem');
 			});
+		};
+		vm.checkExpCond = function(person_id){
+			var cond;
+			if (person_id == vm.selectedID){
+				cond = true;
+			}
+			if (person_id != vm.selectedID){
+				cond = false;
+			}
+			console.log("*********************CHECKING EXPAND CONDITIONS********************************");
+			console.log(cond);
+			return cond;
 		};
 	};
 	
