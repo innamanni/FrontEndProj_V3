@@ -11,12 +11,12 @@
                     <fieldset class="input">
                         <fieldset class="name">
                             <label for="fname">(first name)</label><br />
-                            <input type="text" ng-model="updateRecordC.userData.f_name" name="f_name" id="f_name" />
+                            <input type="text" ng-model="updateRecordC.oneUser.f_name" name="f_name" id="f_name" />
                         </fieldset>
                         
                         <fieldset class="name">
                             <label for="lname">(last name)</label><br />
-                            <input type="text" ng-model="updateRecordC.userData.l_name" name="l_name" id="l_name" />
+                            <input type="text" ng-model="updateRecordC.oneUser.l_name" name="l_name" id="l_name" />
                         </fieldset>
                     </fieldset>
                     
@@ -24,23 +24,23 @@
                     <fieldset class="input">
                         <fieldset class="address1">
                             <label for="street1">(street 1)</label><br />
-                            <input type="text" ng-model="updateRecordC.userData.addrDTO.street1" name="street1" id="street1" />
+                            <input type="text" ng-model="updateRecordC.oneUser.addrDTO.street1" name="street1" id="street1" />
                         </fieldset>
                         
                         <fieldset class="address1">
                             <label for="street2">(street 2)</label><br />
-                            <input type="text" ng-model="updateRecordC.userData.addrDTO.street2" name="street2" id="street2" />
+                            <input type="text" ng-model="updateRecordC.oneUser.addrDTO.street2" name="street2" id="street2" />
                         </fieldset>
                     </fieldset>
                     <fieldset class="input">
                         <fieldset class="address2">
                             <label for="city">(city) </label><br />
-                            <input type="text" ng-model="updateRecordC.userData.addrDTO.city" name="city" id="city" />
+                            <input type="text" ng-model="updateRecordC.oneUser.addrDTO.city" name="city" id="city" />
                         </fieldset>
                         
                         <fieldset class="state">
                             <label for="state">(state) </label><br />
-                            <select name="state" id="state" ng-model="updateRecordC.userData.addrDTO.state_id"  ng-controller="StateController as stateC" >                       
+                            <select name="state" id="state" ng-model="updateRecordC.oneUser.addrDTO.state_id"  ng-controller="StateController as stateC" >                       
                               <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id!='10'" ng-selected=false>{{option.abbr}}</option>
                               <option ng-repeat="option in stateC.stateList" value="{{option.id}}" ng-if="option.id=='10'" ng-selected=true>{{option.abbr}}</option>
                             </select>
@@ -48,7 +48,7 @@
 
                         <fieldset class="zip">
                             <label for="zip">(zip)</label><br />
-                            <input type="text" ng-model="updateRecordC.userData.addrDTO.zip" name="zip" id="zip" size="10" />
+                            <input type="text" ng-model="updateRecordC.oneUser.addrDTO.zip" name="zip" id="zip" size="10" />
                         </fieldset>
                     </fieldset>
                         <!-- ******************************** -->
@@ -56,17 +56,17 @@
                     <fieldset class="input">
                         <fieldset class="email">
                             <label for="email">(email address) </label><br />
-                            <input type="email" ng-model="updateRecordC.userData.email_addr" name="email_addr" id="email_addr" />
+                            <input type="email" ng-model="updateRecordC.oneUser.email_addr" name="email_addr" id="email_addr" />
                         </fieldset>
                       <fieldset class="phone">
                         <label for="phone">(phone number) </label><br />
-                        <input type="phone" ng-model="updateRecordC.userData.phoneDTO.phone_number" name="phone" id="phone" />
+                        <input type="phone" ng-model="updateRecordC.oneUser.phoneDTO.phone_number" name="phone" id="phone" />
                        </fieldset>
                        <fieldset class="phone">
                         <label for="phone_type">(phone type) </label><br />
-                        <select name="phone_type" class="phone_type" ng-model="updateRecordC.userData.phoneDTO.phone_type_id" ng-controller="PhoneController as phoneC" >                   
-                          <option ng-repeat="option in phoneC.phoneTypeList" value="{{option.phone_type_id}}" ng-if="option.phone_type_id!=updateRecordC.userData.phoneDTO.phone_type_id" ng-selected=false>{{option.phone_type}}</option>
-                          <option ng-repeat="option in phoneC.phoneTypeList" value="{{option.phone_type_id}}" ng-if="option.phone_type_id==updateRecordC.userData.phoneDTO.phone_type_id" ng-selected=true>{{option.phone_type}}</option>
+                        <select name="phone_type" class="phone_type" ng-model="updateRecordC.oneUser.phoneDTO.phone_type_id" ng-controller="PhoneController as phoneC" >                   
+                          <option ng-repeat="option in phoneC.phoneTypeList" value="{{option.phone_type_id}}" ng-if="option.phone_type_id!=updateRecordC.oneUser.phoneDTO.phone_type_id" ng-selected=false>{{option.phone_type}}</option>
+                          <option ng-repeat="option in phoneC.phoneTypeList" value="{{option.phone_type_id}}" ng-if="option.phone_type_id==updateRecordC.oneUser.phoneDTO.phone_type_id" ng-selected=true>{{option.phone_type}}</option>
                         </select>
                        </fieldset>
                     </fieldset>
@@ -75,7 +75,7 @@
                
                <fieldset class="submitButtons">
                     <input class="button" type="button" ng-click="updateRecordC.loadNewTemplate()" value="Cancel" />
-                    <input class="button" type="button" ng-click="updateRecordC.update(updateRecordC.userData)" value="Update" />
+                    <input class="button" type="button" ng-click="updateRecordC.update(updateRecordC.oneUser)" value="Update" />
                </fieldset>
           </form>
 

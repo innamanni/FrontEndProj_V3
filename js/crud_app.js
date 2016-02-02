@@ -44,7 +44,7 @@
 		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
 	    	vm.allUsers = data.personList;
-	    	console.log("***ALL USERS:***");
+	    	console.log("***READ ALL USERS:***");
 			console.log(vm.allUsers);
 			//console.log("vm.userData[0].phoneDTO:");
 			//console.log(vm.userData[0].phoneDTO);
@@ -231,9 +231,9 @@
 		//SHOULD CHECK IF THE DATA IS ALREADY IN SCOPE!
 		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
-	    	console.log('readPersonController gets data:');
-	    	console.log(data);
-	    	vm.userData = data.result;
+	    	vm.allUsers = data.personList;
+	    	console.log("***DELETE ALL USERS:***");
+			console.log(vm.allUsers);
 	    });
 		
 		//create an array of person_ids to delete
@@ -285,7 +285,8 @@
 		            method: "GET"
 		    	}).success(function(response) {
 		    	    console.log('Success!');
-		    	    console.log('response message: ' + response);
+		    	    console.log('response message: ');
+		    	    console.log(response);
 		    	    //PAGE SHOULD RELOAD HERE!!!!
 		    	    vm.deleteResponse = "DELETED SUCCESSFULLY";
 				}).error(function(response) {
@@ -305,8 +306,9 @@
 		//get all person from the db
 		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
 	    success(function(data) {
-	    	console.log(data);
-	    	vm.userData = data.result;
+	    	vm.allUsers = data.personList;
+	    	console.log("***UPDATE ALL USERS:***");
+			console.log(vm.allUsers);
 	    });
 		
 		//set update id
@@ -344,10 +346,11 @@
             data: myData,
             headers: {'Content-Type': 'application/json'}
     	}).success(function(response) {
-    	    console.log('***response.result from updatePersonController.php***');
-    	    console.log(response.result);
-    	    console.log(response.result.phoneDTO);
-    	    vm.userData = response.result;
+    		console.log("************inside update user controller call*************");
+    	    console.log("response");
+    	    console.log(response);
+    		vm.oneUser = response;
+    	    console.log("****************end update user controller call**********");
 		}).error(function(response) {
 			console.log(response);
 			console.log('There was a problem');

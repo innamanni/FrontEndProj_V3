@@ -5,17 +5,13 @@
                     <th>delete</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Address</th>
-                    <th>Phone</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="person in deleteC.userData">
+                <tr ng-repeat="person in deleteC.allUsers">
                     <td class="action"><input type="checkbox" ng-click="deleteC.checkDelete(person.person_id)" /></td>
                     <td>{{ person.f_name }} {{ person.l_name }}</td>
                     <td>{{ person.email_addr }}</td>
-                    <td>{{ person.addrDTO.street1 }}</td>
-                    <td>{{ person.phoneDTO.phone_number }} ({{person.phoneDTO.phone_type}}) </td>
                 </tr>
                 <tr>
                     <td colspan=7><label class="message">{{ deleteC.deleteResponse }}</td>

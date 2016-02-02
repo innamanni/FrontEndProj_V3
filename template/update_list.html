@@ -4,19 +4,15 @@
               <thead>
                 <tr>
                     <th>update</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Address</th>
-                    <th>Phone Number</th>
+                    <th>Name</th>
+                    <th>Email</th>
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="person in updateListC.userData">
+                <tr ng-repeat="person in updateListC.allUsers">
                     <td class="action"><input type="radio" name="update" ng-click="updateListC.setUpdateId(person.person_id)"/></td>
                     <td>{{ person.f_name }} {{ person.l_name }}</td>
                     <td>{{ person.email_addr }}</td>
-                    <td>{{ person.addrDTO.street1 }}</td>
-                    <td>{{ person.phoneDTO.phone_number }} ({{person.phoneDTO.phone_type}}) </td>
                 </tr>
                 <tr>
                     <td colspan=7 class="action">
