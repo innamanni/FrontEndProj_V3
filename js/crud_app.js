@@ -41,9 +41,11 @@
 		vm.allUsers = {};
 		vm.bgcolor='white';
 		//get shallow data for all users
-		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
+		$http.get('http://localhost/BackEndProj_V3/controller/readPersonsController.php').
 	    success(function(data) {
-	    	vm.allUsers = data.personList;
+	    	console.log("data");
+	    	console.log(data);
+	    	vm.allUsers = data;
 	    	console.log("***READ ALL USERS:***");
 			console.log(vm.allUsers);
 			//console.log("vm.userData[0].phoneDTO:");
@@ -53,6 +55,8 @@
 	    	if (vm.bgcolor=='white'){vm.bgcolor='#ACD4FC';}
 	    	else {vm.bgcolor='white';}
 		};
+		
+		/*
 		vm.expand = function(person_id) {
 			//get additional data for one user
 			vm.selectedID = person_id
@@ -64,7 +68,7 @@
 			console.log('myData: ');
 			console.log(myData);
 			$http({
-	            url: 'http://localhost/BackEndProj_V3/personDetailsController.php',
+	            url: 'http://localhost/BackEndProj_V3/controller/personDetailsController.php',
 	            method: "POST",
 	            data: myData,
 	            headers: {'Content-Type': 'application/json'}
@@ -91,6 +95,7 @@
 			console.log(cond);
 			return cond;
 		};
+		*/
 	};
 	
 
@@ -102,7 +107,7 @@
 	
 		return { 
 			getStates: function () {
-				var States = $resource('http://localhost/BackEndProj_V3/getStates.php');
+				var States = $resource('http://localhost/BackEndProj_V3/controller/getStates.php');
 				return States.query(function(states){
 					return states;
 				});
@@ -137,7 +142,7 @@
 	
 		return { 
 			getPhoneTypes: function () {
-				var PhoneTypes = $resource('http://localhost/BackEndProj_V3/getPhoneTypes.php');
+				var PhoneTypes = $resource('http://localhost/BackEndProj_V3/controller/getPhoneTypes.php');
 				return PhoneTypes.query(function(phoneTypes){
 					return phoneTypes;
 				});
@@ -191,7 +196,7 @@
 	    	console.log(myData);
 	    	
 	    	$http({
-	            url: 'http://localhost/BackEndProj_V3/createPersonController.php',
+	            url: 'http://localhost/BackEndProj_V3/controller/createPersonController.php',
 	            method: "POST",
 	            data: myData,
 	            headers: {'Content-Type': 'application/json'}
@@ -210,9 +215,9 @@
 	    vm.reset = function(person) {
 	    	if (person != undefined){
 		    	//console.log(person);
-		    	person.lname = "";
-		    	person.fname = "";
-		    	person.email = "";
+		    	person.l_name = "";
+		    	person.f_name = "";
+		    	person.email_addr = "";
 		    	person.phone.phone_number = "";
 		    	person.phone.phone_type_id = "1";
 	    	}
@@ -229,9 +234,9 @@
 		
 		//display all person in the db
 		//SHOULD CHECK IF THE DATA IS ALREADY IN SCOPE!
-		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
+		$http.get('http://localhost/BackEndProj_V3/controller/readPersonsController.php').
 	    success(function(data) {
-	    	vm.allUsers = data.personList;
+	    	vm.allUsers = data;
 	    	console.log("***DELETE ALL USERS:***");
 			console.log(vm.allUsers);
 	    });
@@ -271,7 +276,7 @@
 					return objIdList;
 				};
 				
-				var myURL = 'http://localhost/BackEndProj_V3/deletePersonController.php?deleteId=';
+				var myURL = 'http://localhost/BackEndProj_V3/controller/deletePersonController.php?deleteId=';
 					
 				for (var i=0; i < vm.idList.length; i++){
 					myURL += vm.idList[i];
@@ -304,9 +309,9 @@
 	function UpdateListController($http, $location){
 		var vm = this;
 		//get all person from the db
-		$http.get('http://localhost/BackEndProj_V3/readPersonsController.php').
+		$http.get('http://localhost/BackEndProj_V3/controller/readPersonsController.php').
 	    success(function(data) {
-	    	vm.allUsers = data.personList;
+	    	vm.allUsers = data;
 	    	console.log("***UPDATE ALL USERS:***");
 			console.log(vm.allUsers);
 	    });
@@ -341,7 +346,7 @@
     	console.log(myData);
     	
     	$http({
-            url: 'http://localhost/BackEndProj_V3/updatePersonController.php',
+            url: 'http://localhost/BackEndProj_V3/controller/updatePersonController.php',
             method: "POST",
             data: myData,
             headers: {'Content-Type': 'application/json'}
@@ -371,7 +376,7 @@
 	    	console.log(myData); 
 	    	
 	    	$http({
-	            url: 'http://localhost/BackEndProj_V3/updatePersonRecordController.php',
+	            url: 'http://localhost/BackEndProj_V3/controller/updatePersonRecordController.php',
 	            method: "POST",
 	            data: myData,
 	            headers: {'Content-Type': 'application/json'}

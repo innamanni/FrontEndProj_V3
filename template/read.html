@@ -12,10 +12,11 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-style="myStyle" ng-repeat="person in readC.allUsers" ng-click="readC.bgColor(); myStyle={'background-color':readC.bgcolor}; readC.expand(person.person_id);">
+                <tr ng-style="myStyle" ng-repeat="person in readC.allUsers">
                     <td>{{ $index + 1 }}</td> <!--  | id now: {{person.person_id}} | selected id: {{ readC.selectedID }} -->
                     <td>{{ person.f_name }} {{ person.l_name }}</td>
                     <td>{{ person.email_addr }}</td>
+                    <!-- ng-click="readC.bgColor(); myStyle={'background-color':readC.bgcolor}; readC.expand(person.person_id);" -->
                     <!--div  ng-if="person.person_id==readC.selectedID">
 	                    <td>{{ readC.oneUser.addrDTO.street1 }}</td>
 	                    <td>{{ readC.oneUser.phoneDTO.phone_number }}</td>
